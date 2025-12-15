@@ -14,8 +14,9 @@ with tab0:
     sql_query = st.text_area(label="Entrez votre requête SQL:")
     st.write(f"Vous avez entré la requete suivante: {sql_query}")
 
-    result = duckdb.sql(sql_query).df()
-    st.dataframe(result)
+    if len(sql_query)>0:
+        result = duckdb.sql(sql_query).df()
+        st.dataframe(result)
 
 with tab1:
     st.write("Chats")
